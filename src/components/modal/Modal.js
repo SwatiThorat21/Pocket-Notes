@@ -47,7 +47,7 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
             <div
               style={{
                 backgroundColor: "#F19576",
-                padding: "0.6rem",
+                padding: "0.7rem",
                 borderRadius: "50%",
               }}
               onClick={()=>handleColorClick("#F19576")}
