@@ -1,3 +1,4 @@
+import "./grouplist.css"
 export default function GroupList() {
   return (
     <>

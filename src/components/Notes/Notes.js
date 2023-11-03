@@ -1,6 +1,7 @@
-import bg_img from "../images/bg_image.png";
-import encrypImg from "../images/encryp.png";
-import sendIcon from "../images/sendIcon.png"
+import bg_img from "../../images/bg_image.png";
+import encrypImg from "../../images/encryp.png";
+import sendIcon from "../../images/sendIcon.png";
+import "./notes.css"
 
 export default function GetNotes() {
   return (

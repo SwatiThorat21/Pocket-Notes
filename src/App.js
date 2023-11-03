@@ -1,7 +1,7 @@
-import Notes from "./components/Notes";
-import GroupList from "./components/GroupList";
+import Notes from "./components/Notes/Notes";
+import GroupList from "./components/groups/GroupList";
 import "./App.css";
-import Modal from "./components/Modal";
+import Modal from "./components/modal/Modal";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Notes />
         </div>
       </div>
-      <div className="modal">
+      <div className="modal" style={{"display":"none"}}>
         <Modal />
       </div>
     </>
