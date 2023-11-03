@@ -1,18 +1,18 @@
 import bg_img from "../../images/bg_image.png";
 import encrypImg from "../../images/encryp.png";
 import sendIcon from "../../images/sendIcon.png";
-import "./notes.css"
+import "./notes.css";
 
-export default function GetNotes() {
+export default function GetNotes({ grName, selectedColor }) {
   return (
     <>
       <div className="pocket_notes_homepg" style={{ display: "none" }}>
         <img src={bg_img} alt="bg_image" />
         <h2 className="default_heading">Pocket Notes</h2>
-        <p style={{ "margin-top": "5px" }}>
+        <p style={{ marginTop: "5px" }}>
           Send and receive messages without keeping your phone online.
         </p>
-        <p style={{ "margin-top": "5px" }}>
+        <p style={{ marginTop: "5px" }}>
           Use Pocket Notes on up to 4 linked devices and 1 mobile phone
         </p>
         <p className="encryption">
@@ -22,8 +22,10 @@ export default function GetNotes() {
       </div>
       <div className="show_notes">
         <div className="group_heading">
-          <div className="gr_logo">CN</div>
-          <p className="gr_name">Cuvette Notes</p>
+          <div className="gr_logo" style={{ backgroundColor: selectedColor }}>
+            {grName.slice(0, 2).toUpperCase()}
+          </div>
+          <p className="gr_name">{grName}</p>
         </div>
         <div className="notes_wrapper">
           <div className="notes">
@@ -76,8 +78,11 @@ export default function GetNotes() {
           </div>
         </div>
         <div className="teaxtarea_wrapper">
-            <textarea rows="7" placeholder="Enter your text here.........."></textarea>
-            <img src={sendIcon} alt="sendIcon" />
+          <textarea
+            rows="7"
+            placeholder="Enter your text here.........."
+          ></textarea>
+          <img src={sendIcon} alt="sendIcon" />
         </div>
       </div>
     </>

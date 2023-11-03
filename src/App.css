@@ -16,3 +16,6 @@
   font-size: 28px;
   letter-spacing: 0.6px;
 }
+.opaqueBack{
+  opacity: 0.4;
+}

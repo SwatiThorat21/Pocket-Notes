@@ -40,7 +40,7 @@
     cursor: pointer;
   }
   .gr_logo {
-    background-color: #0047ff;
+    /* background-color: #0047ff; */
     color: #ffffff;
     padding: 1rem;
     border-radius: 50%;
