@@ -126,6 +126,7 @@
 .teaxtarea_wrapper{
   background-color: #CCCCCC;
   padding: 1rem;
+  position: relative;
   /* height: 90px; */
 }
 textarea{
@@ -135,8 +136,19 @@ textarea{
   border: none;
   border-radius: 7px;
   padding: 0.5rem;
+  resize: none;
 }
 textarea::placeholder{
   font-family: "Roboto", sans-serif;
   font-size: 16px;
+}
+.teaxtarea_wrapper img{
+  width: 26px;
+  position: absolute;
+  top: 100px;
+  right: 30px;
+}
+.teaxtarea_wrapper img:hover{
+  transform: scale(1.2);
+  cursor: pointer;
 }

@@ -1,5 +1,6 @@
 import bg_img from "../images/bg_image.png";
 import encrypImg from "../images/encryp.png";
+import sendIcon from "../images/sendIcon.png"
 
 export default function GetNotes() {
   return (
@@ -74,7 +75,8 @@ export default function GetNotes() {
           </div>
         </div>
         <div className="teaxtarea_wrapper">
-            <textarea placeholder="Enter your text here.........."></textarea>
+            <textarea rows="7" placeholder="Enter your text here.........."></textarea>
+            <img src={sendIcon} alt="sendIcon" />
         </div>
       </div>
     </>

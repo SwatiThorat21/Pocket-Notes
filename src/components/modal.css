@@ -1,0 +1,70 @@
+@keyframes slidebg {
+  to {
+    background-position: 20vw;
+  }
+}
+
+.modal_container {
+  background-color: #ffffff;
+  padding: 0.8rem 1.5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.modal_grName_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.modal_colors_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.colours_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.modal_heading {
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  margin: 0.5rem;
+}
+.modal_grName_wrapper p,
+.modal_colors_wrapper p {
+  font-size: 16px;
+  font-weight: 600;
+}
+.modal_grName_wrapper input {
+  border: 1px solid #cccccc;
+  border-radius: 18px;
+  padding: 0.4rem 4rem 0.4rem 1rem;
+}
+.create_btn {
+  background-color: #000000;
+  padding: 0.4rem 1.5rem;
+  color: #ffffff;
+  border: none;
+  padding: none;
+  border-radius: 8px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  float: right;
+  cursor: pointer;
+}
+.create_btn:hover {
+  background-image: linear-gradient(
+    90deg,
+    #B38BFA 0%,
+    #FF79F2 49%,
+    #43E6FC 80%,
+    #F19576 100%
+  );
+  animation: slidebg 5s linear infinite;
+}
