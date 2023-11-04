@@ -14,7 +14,7 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
             type="text"
             placeholder="Enter your group name...."
             value={grName}
-            onChange={(e) => handleChange(e)}
+            onChange={(e)=>handleChange(e)}
           ></input>
         </div>
         <div className="modal_colors_wrapper">

@@ -1,9 +1,52 @@
+import { useState, useEffect } from "react";
 import bg_img from "../../images/bg_image.png";
 import encrypImg from "../../images/encryp.png";
 import sendIcon from "../../images/sendIcon.png";
 import "./notes.css";
 
 export default function GetNotes({ grName, selectedColor }) {
+  const [newNotesData, setNewNotesData] = useState({
+    time: "",
+    date: "",
+    note: "",
+  });
+
+  useEffect(() => {
+    const todaysDate = new Date();
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const formattedDate = todaysDate.toLocaleDateString("en-US", options);
+    setNewNotesData({
+      ...newNotesData,
+      date: formattedDate,
+    });
+  }, []);
+
+  useEffect(() => {
+    const date = new Date();
+    let hours = date.getHours();
+    let ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : "12";
+    let minutes = date.getMinutes();
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    const timeFormat = hours + ":" + minutes + " " + ampm;
+    setNewNotesData({
+      ...newNotesData,
+      time: timeFormat,
+    });
+  }, []);
+
+  function handleCreateNotes(e) {
+    setNewNotesData({
+      ...newNotesData,
+      note: e.target.value,
+    });
+  }
+
   return (
     <>
       <div className="pocket_notes_homepg" style={{ display: "none" }}>
@@ -23,57 +66,18 @@ export default function GetNotes({ grName, selectedColor }) {
       <div className="show_notes">
         <div className="group_heading">
           <div className="gr_logo" style={{ backgroundColor: selectedColor }}>
-            {grName.slice(0, 2).toUpperCase()}
+            {grName.slice(0,2).toUpperCase()}
           </div>
           <p className="gr_name">{grName}</p>
         </div>
         <div className="notes_wrapper">
           <div className="notes">
             <div className="dateTime_wrapper">
-              <p>10:10 Am</p>
-              <p>9 March 2023</p>
+              <p>{newNotesData.time}</p>
+              <p>{newNotesData.date}</p>
             </div>
             <div className="note_content">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
-            </div>
-          </div>
-          <div className="notes">
-            <div className="dateTime_wrapper">
-              <p>10:10 Am</p>
-              <p>9 March 2023</p>
-            </div>
-            <div className="note_content">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
-            </div>
-          </div>
-          <div className="notes">
-            <div className="dateTime_wrapper">
-              <p>10:10 Am</p>
-              <p>9 March 2023</p>
-            </div>
-            <div className="note_content">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
+              <p>{newNotesData.note}</p>
             </div>
           </div>
         </div>
@@ -81,6 +85,8 @@ export default function GetNotes({ grName, selectedColor }) {
           <textarea
             rows="7"
             placeholder="Enter your text here.........."
+            value={newNotesData.note}
+            onChange={(e) => handleCreateNotes(e)}
           ></textarea>
           <img src={sendIcon} alt="sendIcon" />
         </div>

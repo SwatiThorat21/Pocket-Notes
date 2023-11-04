@@ -14,7 +14,7 @@ export default function GroupList({ handleOpen, grName, selectedColor }) {
                 className="gr_logo"
                 style={{ backgroundColor: selectedColor }}
               >
-                {grName.slice(0, 2).toUpperCase()}
+                {grName.slice(0,2).toUpperCase()}
               </div>
               <p className="gr_name">{grName}</p>
             </div>
