@@ -1,9 +1,11 @@
 import "./modal.css";
 
-export default function Modal({ handleClose, grName, handleChange, handleColorClick }) {
-  function closeModal() {
-    handleClose();
-  }
+export default function Modal({
+  handleSubmit,
+  setNewGroupName,
+  newGroupName,
+  setNewSelectedColor,
+}) {
   return (
     <>
       <div className="modal_container">
@@ -13,8 +15,8 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
           <input
             type="text"
             placeholder="Enter your group name...."
-            value={grName}
-            onChange={(e)=>handleChange(e)}
+            value={newGroupName}
+            onChange={(e) => setNewGroupName(e.target.value)}
           ></input>
         </div>
         <div className="modal_colors_wrapper">
@@ -26,7 +28,7 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
                 padding: "0.7rem",
                 borderRadius: "50%",
               }}
-              onClick={()=>handleColorClick("#B38BFA")}
+              onClick={() => setNewSelectedColor("#B38BFA")}
             ></div>
             <div
               style={{
@@ -34,7 +36,7 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
                 padding: "0.7rem",
                 borderRadius: "50%",
               }}
-              onClick={()=>handleColorClick("#FF79F2")}
+              onClick={() => setNewSelectedColor("#FF79F2")}
             ></div>
             <div
               style={{
@@ -42,7 +44,7 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
                 padding: "0.7rem",
                 borderRadius: "50%",
               }}
-              onClick={()=>handleColorClick("#43E6FC")}
+              onClick={() => setNewSelectedColor("#43E6FC")}
             ></div>
             <div
               style={{
@@ -50,7 +52,7 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
                 padding: "0.7rem",
                 borderRadius: "50%",
               }}
-              onClick={()=>handleColorClick("#F19576")}
+              onClick={() => setNewSelectedColor("#F19576")}
             ></div>
             <div
               style={{
@@ -58,7 +60,7 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
                 padding: "0.7rem",
                 borderRadius: "50%",
               }}
-              onClick={()=>handleColorClick("#0047FF")}
+              onClick={() => setNewSelectedColor("#0047FF")}
             ></div>
             <div
               style={{
@@ -66,11 +68,11 @@ export default function Modal({ handleClose, grName, handleChange, handleColorCl
                 padding: "0.7rem",
                 borderRadius: "50%",
               }}
-              onClick={()=>handleColorClick("#6691FF")}
+              onClick={() => setNewSelectedColor("#6691FF")}
             ></div>
           </div>
         </div>
-        <button className="create_btn" onClick={closeModal}>
+        <button className="create_btn" onClick={handleSubmit}>
           Create
         </button>
       </div>

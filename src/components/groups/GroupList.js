@@ -1,5 +1,6 @@
 import "./grouplist.css";
-export default function GroupList({ handleOpen, grName, selectedColor }) {
+export default function GroupList({ handleOpen, groupData }) {
+  console.log(groupData);
   return (
     <>
       <div>
@@ -9,15 +10,23 @@ export default function GroupList({ handleOpen, grName, selectedColor }) {
             <span className="plusIcon">+</span>Create Notes Group
           </button>
           <div className="group_list">
-            <div className="group">
-              <div
-                className="gr_logo"
-                style={{ backgroundColor: selectedColor }}
-              >
-                {grName.slice(0,2).toUpperCase()}
-              </div>
-              <p className="gr_name">{grName}</p>
-            </div>
+            {groupData.map((group, index) =>
+              group.grName === "" ? (
+                <p className="noGroup_line" key={index}>
+                  Please add notes group !!
+                </p>
+              ) : (
+                <div className="group" key={index}>
+                  <div
+                    className="gr_logo"
+                    style={{ backgroundColor: group.selectedColor }}
+                  >
+                    {group.grName.slice(0, 2).toUpperCase()}
+                  </div>
+                  <p className="gr_name">{group.grName}</p>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>

@@ -1,51 +1,47 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import bg_img from "../../images/bg_image.png";
 import encrypImg from "../../images/encryp.png";
 import sendIcon from "../../images/sendIcon.png";
 import "./notes.css";
 
 export default function GetNotes({ grName, selectedColor }) {
-  const [newNotesData, setNewNotesData] = useState({
-    time: "",
-    date: "",
-    note: "",
-  });
+  
 
-  useEffect(() => {
-    const todaysDate = new Date();
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    const formattedDate = todaysDate.toLocaleDateString("en-US", options);
-    setNewNotesData({
-      ...newNotesData,
-      date: formattedDate,
-    });
-  }, []);
+  // useEffect(() => {
+  //   const todaysDate = new Date();
+  //   const options = {
+  //     year: "numeric",
+  //     month: "long",
+  //     day: "numeric",
+  //   };
+  //   const formattedDate = todaysDate.toLocaleDateString("en-US", options);
+  //   setNewNotesData({
+  //     ...newNotesData,
+  //     date: formattedDate,
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    const date = new Date();
-    let hours = date.getHours();
-    let ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
-    hours = hours ? hours : "12";
-    let minutes = date.getMinutes();
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    const timeFormat = hours + ":" + minutes + " " + ampm;
-    setNewNotesData({
-      ...newNotesData,
-      time: timeFormat,
-    });
-  }, []);
+  // useEffect(() => {
+  //   const date = new Date();
+  //   let hours = date.getHours();
+  //   let ampm = hours >= 12 ? "PM" : "AM";
+  //   hours = hours % 12;
+  //   hours = hours ? hours : "12";
+  //   let minutes = date.getMinutes();
+  //   minutes = minutes < 10 ? "0" + minutes : minutes;
+  //   const timeFormat = hours + ":" + minutes + " " + ampm;
+  //   setNewNotesData({
+  //     ...newNotesData,
+  //     time: timeFormat,
+  //   });
+  // }, []);
 
-  function handleCreateNotes(e) {
-    setNewNotesData({
-      ...newNotesData,
-      note: e.target.value,
-    });
-  }
+  // function handleCreateNotes(e) {
+  //   setNewNotesData({
+  //     ...newNotesData,
+  //     note: e.target.value,
+  //   });
+  // }
 
   return (
     <>
@@ -73,11 +69,11 @@ export default function GetNotes({ grName, selectedColor }) {
         <div className="notes_wrapper">
           <div className="notes">
             <div className="dateTime_wrapper">
-              <p>{newNotesData.time}</p>
-              <p>{newNotesData.date}</p>
+              {/* <p>{newNotesData.time}</p>
+              <p>{newNotesData.date}</p> */}
             </div>
             <div className="note_content">
-              <p>{newNotesData.note}</p>
+              {/* <p>{newNotesData.note}</p> */}
             </div>
           </div>
         </div>
@@ -85,8 +81,8 @@ export default function GetNotes({ grName, selectedColor }) {
           <textarea
             rows="7"
             placeholder="Enter your text here.........."
-            value={newNotesData.note}
-            onChange={(e) => handleCreateNotes(e)}
+            // value={newNotesData.note}
+            // onChange={(e) => handleCreateNotes(e)}
           ></textarea>
           <img src={sendIcon} alt="sendIcon" />
         </div>

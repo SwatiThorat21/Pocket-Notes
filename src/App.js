@@ -19,67 +19,61 @@ function App() {
       ],
     },
   ]);
+  const [newGroupName, setNewGroupName] = useState("");
+  const [newSelectedColor, setNewSelectedColor] = useState("");
+  const [newNotesData, setNewNotesData] = useState([
+    {
+      time: "",
+      date: "",
+      note: "",
+    },
+  ]);
 
   function handleOpen() {
     setIsModalOpen(true);
   }
 
-  function handleClose() {
+  function handleSubmit() {
+    if (newGroupName.trim() !== "") {
+      const newGroup = {
+        grName: newGroupName,
+        selectedColor: newSelectedColor,
+        notesData: newNotesData,
+      };
+      setGroupData([...groupData, newGroup]);
+      setNewGroupName("");
+    }
     setIsModalOpen(false);
   }
-
-  function handleChange(e, index) {
-    const updatedGroupData = [...groupData];
-    updatedGroupData[index].grName = e.target.value;
-    setGroupData(updatedGroupData);
-  }
-
-  function handleColorClick(color, index) {
-    const updatedGroupData = [...groupData];
-    updatedGroupData[index].selectedColor = color;
-    setGroupData(updatedGroupData);
-  }
-  // function handleAddNotes(newNotesData) {
-  //   setGroupData({
-  //     ...groupData,
-  //     notesData: {
-  //       ...groupData.notesData,
-  //       ...newNotesData,
-  //     },
-  //   });
-  // }
   console.log(groupData);
   return (
     <>
-      {groupData.map((group, index) => (
-        <div key={index}>
-          <div className={`notes_container ${isModalOpen && "opaqueBack"}`}>
-            <div className="group_details_container">
-              <GroupList
-                key={index}
-                handleOpen={handleOpen}
-                grName={group.grName}
-                selectedColor={group.selectedColor}
-              />
-            </div>
-            <div className="show_notes_container">
-              <Notes
-                grName={group.grName}
-                selectedColor={group.selectedColor}
-                notesData={group.notesData}
-              />
-            </div>
+      <div>
+        <div className={`notes_container ${isModalOpen && "opaqueBack"}`}>
+          <div className="group_details_container">
+            <GroupList handleOpen={handleOpen} groupData={groupData} />
           </div>
-          {isModalOpen && (
-            <Modal
-              handleClose={handleClose}
-              grName={group.grName}
-              handleChange={(e)=>handleChange(e, index)}
-              handleColorClick={(color)=>handleColorClick(color,index)}
-            />
-          )}
+          <div className="show_notes_container">
+            {groupData.map((group, index) => (
+              <Notes
+                key={index}
+                grName={group.grName}
+                selectedColor={group.selectedColor}
+                newNotesData={newNotesData}
+                setNewNotesData={setNewNotesData}
+              />
+            ))}
+          </div>
         </div>
-      ))}
+        {isModalOpen && (
+          <Modal
+            setNewGroupName={setNewGroupName}
+            handleSubmit={handleSubmit}
+            newSelectedColor={newSelectedColor}
+            setNewSelectedColor={setNewSelectedColor}
+          />
+        )}
+      </div>
     </>
   );
 }
