@@ -51,5 +51,8 @@
     letter-spacing: 0.4px;
   }
   .noGroup_line{
-    
+    font-size: 19px;
+    margin-left: 14px;
+    font-weight: 500;
+    color: #464444;
   }

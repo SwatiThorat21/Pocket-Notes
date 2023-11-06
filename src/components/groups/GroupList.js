@@ -10,12 +10,10 @@ export default function GroupList({ handleOpen, groupData }) {
             <span className="plusIcon">+</span>Create Notes Group
           </button>
           <div className="group_list">
-            {groupData.map((group, index) =>
-              group.grName === "" ? (
-                <p className="noGroup_line" key={index}>
-                  Please add notes group !!
-                </p>
-              ) : (
+            {groupData.length === 0 ? (
+              <p className="noGroup_line">Please add notes group !!</p>
+            ) : (
+              groupData.map((group, index) => (
                 <div className="group" key={index}>
                   <div
                     className="gr_logo"
@@ -25,7 +23,7 @@ export default function GroupList({ handleOpen, groupData }) {
                   </div>
                   <p className="gr_name">{group.grName}</p>
                 </div>
-              )
+              ))
             )}
           </div>
         </div>

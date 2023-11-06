@@ -6,28 +6,10 @@ import { useState } from "react";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [groupData, setGroupData] = useState([
-    {
-      grName: "",
-      selectedColor: "",
-      notesData: [
-        {
-          time: "",
-          date: "",
-          note: "",
-        },
-      ],
-    },
-  ]);
+  const [groupData, setGroupData] = useState([]);
   const [newGroupName, setNewGroupName] = useState("");
   const [newSelectedColor, setNewSelectedColor] = useState("");
-  const [newNotesData, setNewNotesData] = useState([
-    {
-      time: "",
-      date: "",
-      note: "",
-    },
-  ]);
+  const [newNotesData, setNewNotesData] = useState([]);
 
   function handleOpen() {
     setIsModalOpen(true);
@@ -54,15 +36,11 @@ function App() {
             <GroupList handleOpen={handleOpen} groupData={groupData} />
           </div>
           <div className="show_notes_container">
-            {groupData.map((group, index) => (
-              <Notes
-                key={index}
-                grName={group.grName}
-                selectedColor={group.selectedColor}
-                newNotesData={newNotesData}
-                setNewNotesData={setNewNotesData}
-              />
-            ))}
+            <Notes
+              groupData={groupData}
+              newNotesData={newNotesData}
+              setNewNotesData={setNewNotesData}
+            />
           </div>
         </div>
         {isModalOpen && (
