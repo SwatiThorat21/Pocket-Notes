@@ -5,7 +5,15 @@ export default function Modal({
   setNewGroupName,
   newGroupName,
   setNewSelectedColor,
+  error,
+  setError
 }) {
+  function handleInputChange(e){
+    setNewGroupName(e.target.value);
+    if (e.target.value.trim() !== "") {
+      setError(false); 
+    }
+  }
   return (
     <>
       <div>
@@ -16,7 +24,7 @@ export default function Modal({
             type="text"
             placeholder="Enter your group name...."
             value={newGroupName}
-            onChange={(e) => setNewGroupName(e.target.value)}
+            onChange={handleInputChange}
           ></input>
         </div>
         <div className="modal_colors_wrapper">
@@ -78,6 +86,7 @@ export default function Modal({
             ></div>
           </div>
         </div>
+        {error ? <p className="errorMsg">Please enter valid details !</p> : ""}
         <button className="create_btn" onClick={handleGroupSubmit}>
           Create
         </button>

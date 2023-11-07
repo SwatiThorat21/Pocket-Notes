@@ -71,3 +71,10 @@
 .selctedColor:hover{
   transform: scale(1.1);
 }
+.errorMsg{
+  margin: 0;
+  font-size: 14px;
+  color: rgb(232, 56, 56);
+  text-align: center;
+  font-weight: 600;
+}

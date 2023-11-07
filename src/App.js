@@ -11,17 +11,21 @@ function App() {
   const [newGroupName, setNewGroupName] = useState("");
   const [newSelectedColor, setNewSelectedColor] = useState("");
   const [selectedGroup, setSelectedGroup] = useState(0);
+  const [error, setError] = useState(false);
 
   const ref = useClickAway(() => {
-    setIsModalOpen(false);
+    if (!error) {
+      setIsModalOpen(false);
+    }
   });
 
   function handleOpen() {
+    setError(false);
     setIsModalOpen(true);
   }
 
   function handleGroupSubmit() {
-    if (newGroupName.trim() !== "") {
+    if (newGroupName.trim() !== "" && newSelectedColor) {
       const newGroup = {
         grName: newGroupName,
         selectedColor: newSelectedColor,
@@ -30,8 +34,12 @@ function App() {
       setGroupData([...groupData, newGroup]);
       setSelectedGroup(groupData.length);
       setNewGroupName("");
+      setNewSelectedColor("");
+      setIsModalOpen(false);
+      setError(false)
+    } else {
+      setError(true);
     }
-    setIsModalOpen(false);
   }
 
   // console.log(groupData);
@@ -62,6 +70,8 @@ function App() {
               handleGroupSubmit={handleGroupSubmit}
               newSelectedColor={newSelectedColor}
               setNewSelectedColor={setNewSelectedColor}
+              error={error}
+              setError={setError}
             />
           </dialog>
         )}
