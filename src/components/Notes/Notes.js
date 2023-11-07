@@ -4,10 +4,17 @@ import encrypImg from "../../images/encryp.png";
 import sendIcon from "../../images/sendIcon.png";
 import "./notes.css";
 
-export default function GetNotes({ groupData, newNotesData, setNewNotesData }) {
+export default function GetNotes({
+  groupData,
+  newNotesData,
+  setNewNotesData,
+  selectedGroup,
+}) {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const [note, setNote] = useState("");
+
+  const selectedGroupData = groupData[selectedGroup];
 
   useEffect(() => {
     const todaysDate = new Date();
@@ -33,17 +40,19 @@ export default function GetNotes({ groupData, newNotesData, setNewNotesData }) {
   }, []);
 
   function handleNoteSubmit() {
-    if (note.trim() !== "") {
+    if (note.trim() !== "" ) {
       const newNote = {
         time: time,
         date: date,
         note: note,
       };
-      setNewNotesData([...newNotesData, newNote]);
+      if (selectedGroupData) {
+        setNewNotesData([...newNotesData, newNote]);
+      }
+      setNote("");
     }
-    setNote("");
   }
-  console.log(newNotesData)
+  console.log(selectedGroupData);
 
   return (
     <>
@@ -65,8 +74,8 @@ export default function GetNotes({ groupData, newNotesData, setNewNotesData }) {
       ) : (
         <div className="show_notes">
           {groupData &&
-            groupData.map((group) => (
-              <div className="group_heading">
+            groupData.map((group, index) => (
+              <div className="group_heading" key={index}>
                 <div
                   className="gr_logo"
                   style={{ backgroundColor: group.selectedColor }}
@@ -77,8 +86,8 @@ export default function GetNotes({ groupData, newNotesData, setNewNotesData }) {
               </div>
             ))}
           <div className="notes_wrapper">
-            {newNotesData.map((noteData) => (
-              <div className="notes">
+            {newNotesData.map((noteData, index) => (
+              <div className="notes" key={index}>
                 <div className="dateTime_wrapper">
                   <p>{noteData.time}</p>
                   <p>{noteData.date}</p>

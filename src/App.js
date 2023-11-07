@@ -10,6 +10,7 @@ function App() {
   const [newGroupName, setNewGroupName] = useState("");
   const [newSelectedColor, setNewSelectedColor] = useState("");
   const [newNotesData, setNewNotesData] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState(0);
 
   function handleOpen() {
     setIsModalOpen(true);
@@ -27,19 +28,26 @@ function App() {
     }
     setIsModalOpen(false);
   }
-  console.log(groupData);
+
+  // console.log(groupData);
   return (
     <>
       <div>
         <div className={`notes_container ${isModalOpen && "opaqueBack"}`}>
           <div className="group_details_container">
-            <GroupList handleOpen={handleOpen} groupData={groupData} />
+            <GroupList
+              handleOpen={handleOpen}
+              groupData={groupData}
+              selectedGroup={selectedGroup}
+              setSelectedGroup={setSelectedGroup}
+            />
           </div>
           <div className="show_notes_container">
             <Notes
               groupData={groupData}
               newNotesData={newNotesData}
               setNewNotesData={setNewNotesData}
+              selectedGroup={selectedGroup}
             />
           </div>
         </div>

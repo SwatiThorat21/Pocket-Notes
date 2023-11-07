@@ -1,6 +1,14 @@
 import "./grouplist.css";
-export default function GroupList({ handleOpen, groupData }) {
-  console.log(groupData);
+export default function GroupList({
+  handleOpen,
+  groupData,
+  setSelectedGroup,
+  selectedGroup,
+}) {
+  function handleGroupClick(index) {
+    setSelectedGroup(index);
+    console.log(selectedGroup);
+  }
   return (
     <>
       <div>
@@ -14,7 +22,7 @@ export default function GroupList({ handleOpen, groupData }) {
               <p className="noGroup_line">Please add notes group !!</p>
             ) : (
               groupData.map((group, index) => (
-                <div className="group" key={index}>
+                <div className="group" key={index} onClick={()=>handleGroupClick(index)}>
                   <div
                     className="gr_logo"
                     style={{ backgroundColor: group.selectedColor }}

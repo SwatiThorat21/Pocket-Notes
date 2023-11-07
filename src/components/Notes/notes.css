@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    margin-top: 10rem !important;
+    margin-top: 8rem !important;
   }
   .show_notes{
     height: 100vh;
