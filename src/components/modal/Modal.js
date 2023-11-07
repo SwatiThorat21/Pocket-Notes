@@ -1,4 +1,5 @@
 import "./modal.css";
+import "../../App.css"
 
 export default function Modal({
   handleGroupSubmit,

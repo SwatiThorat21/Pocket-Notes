@@ -3,6 +3,7 @@ import bg_img from "../../images/bg_image.png";
 import encrypImg from "../../images/encryp.png";
 import sendIcon from "../../images/sendIcon.png";
 import "./notes.css";
+import "../../App.css"
 
 export default function Notes({ groupData, selectedGroup, setGroupData }) {
   const [note, setNote] = useState("");

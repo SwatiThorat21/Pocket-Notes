@@ -1,4 +1,6 @@
 import "./grouplist.css";
+import "../../App.css"
+
 export default function GroupList({
   handleOpen,
   groupData,

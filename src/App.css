@@ -35,3 +35,36 @@ dialog {
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border: none;
 }
+@media only screen and (max-width: 480px) {
+  .show_notes_container {
+    display: none;
+  }
+  .group_list {
+    overflow-y: hidden !important;
+  }
+  .notes_container {
+    grid-template-columns: 1fr;
+  }
+  .group_list_Wrapper {
+    margin: 2rem 0 0 1rem !important;
+  }
+  .modal_container {
+    padding: 0.5rem 0.5rem !important;
+    left: 50% !important;
+  }
+  .modal_grName_wrapper p,
+  .modal_colors_wrapper p {
+    font-size: 0.7rem !important;
+    width: 72px !important;
+  }
+  .modal_grName_wrapper input{
+    padding: 0.2rem 1.5rem 0.2rem 0.6rem !important;
+  }
+  .modal_heading {
+    font-size: 1rem !important;
+  }
+  .create_btn{
+    padding: 0.3rem 1rem !important;
+  }
+  
+}
