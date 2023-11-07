@@ -69,7 +69,8 @@
   animation: slidebg 5s linear infinite;
 }
 .selctedColor:hover{
-  transform: scale(1.1);
+  transform: scale(1.3);
+  filter: brightness(90%);
 }
 .errorMsg{
   margin: 0;

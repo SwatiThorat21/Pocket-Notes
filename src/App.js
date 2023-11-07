@@ -2,7 +2,7 @@ import Notes from "./components/Notes/Notes";
 import GroupList from "./components/groups/GroupList";
 import "./App.css";
 import Modal from "./components/modal/Modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useClickAway } from "@uidotdev/usehooks";
 
 function App() {
@@ -18,6 +18,19 @@ function App() {
       setIsModalOpen(false);
     }
   });
+
+  useEffect(() => {
+    const storedData = JSON.parse(window.localStorage.getItem("groupData"));
+    if (storedData) {
+      setGroupData(storedData);
+    }
+  }, []);
+
+  useEffect(() => {
+    if(groupData.length !== 0){
+      window.localStorage.setItem("groupData", JSON.stringify(groupData));
+    }
+  }, [groupData]);
 
   function handleOpen() {
     setError(false);
@@ -72,6 +85,7 @@ function App() {
               setNewSelectedColor={setNewSelectedColor}
               error={error}
               setError={setError}
+              newGroupName={newGroupName}
             />
           </dialog>
         )}
