@@ -21,16 +21,19 @@ function App() {
 
   useEffect(() => {
     const storedData = JSON.parse(window.localStorage.getItem("groupData"));
+    const selectedGroup = JSON.parse(window.localStorage.getItem("selectedGroup"));
     if (storedData) {
       setGroupData(storedData);
+      setSelectedGroup(selectedGroup);
     }
   }, []);
 
   useEffect(() => {
-    if(groupData.length !== 0){
+    if (groupData.length !== 0) {
       window.localStorage.setItem("groupData", JSON.stringify(groupData));
+      window.localStorage.setItem("selectedGroup", JSON.stringify(selectedGroup));
     }
-  }, [groupData]);
+  }, [groupData, selectedGroup]);
 
   function handleOpen() {
     setError(false);
@@ -49,13 +52,12 @@ function App() {
       setNewGroupName("");
       setNewSelectedColor("");
       setIsModalOpen(false);
-      setError(false)
+      setError(false);
     } else {
       setError(true);
     }
   }
 
-  // console.log(groupData);
   return (
     <>
       <div>

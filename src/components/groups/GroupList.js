@@ -16,12 +16,24 @@ export default function GroupList({
           <button className="createNotes_btn" onClick={handleOpen}>
             <span className="plusIcon">+</span>Create Notes Group
           </button>
-          <div className="group_list">
+          <div
+            className="group_list"
+            style={{
+              overflowY: groupData.length > 6 ? "scroll" : "hidden",
+              maxHeight: "420px",
+            }}
+          >
             {groupData.length === 0 ? (
               <p className="noGroup_line">Please add notes group !!</p>
             ) : (
               groupData.map((group, index) => (
-                <div className={`group ${index === selectedGroup && "selectedGroup"}`} key={index} onClick={()=>handleGroupClick(index)}>
+                <div
+                  className={`group ${
+                    index === selectedGroup && "selectedGroup"
+                  }`}
+                  key={index}
+                  onClick={() => handleGroupClick(index)}
+                >
                   <div
                     className="gr_logo"
                     style={{ backgroundColor: group.selectedColor }}
