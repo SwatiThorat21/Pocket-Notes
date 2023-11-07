@@ -3,6 +3,7 @@ import GroupList from "./components/groups/GroupList";
 import "./App.css";
 import Modal from "./components/modal/Modal";
 import { useState } from "react";
+import { useClickAway } from "@uidotdev/usehooks";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,11 +12,15 @@ function App() {
   const [newSelectedColor, setNewSelectedColor] = useState("");
   const [selectedGroup, setSelectedGroup] = useState(0);
 
+  const ref = useClickAway(() => {
+    setIsModalOpen(false);
+  });
+
   function handleOpen() {
     setIsModalOpen(true);
   }
 
-  function handleSubmit() {
+  function handleGroupSubmit() {
     if (newGroupName.trim() !== "") {
       const newGroup = {
         grName: newGroupName,
@@ -23,6 +28,7 @@ function App() {
         notesData: [],
       };
       setGroupData([...groupData, newGroup]);
+      setSelectedGroup(groupData.length);
       setNewGroupName("");
     }
     setIsModalOpen(false);
@@ -50,12 +56,14 @@ function App() {
           </div>
         </div>
         {isModalOpen && (
-          <Modal
-            setNewGroupName={setNewGroupName}
-            handleSubmit={handleSubmit}
-            newSelectedColor={newSelectedColor}
-            setNewSelectedColor={setNewSelectedColor}
-          />
+          <dialog ref={ref} className="modal_container">
+            <Modal
+              setNewGroupName={setNewGroupName}
+              handleGroupSubmit={handleGroupSubmit}
+              newSelectedColor={newSelectedColor}
+              setNewSelectedColor={setNewSelectedColor}
+            />
+          </dialog>
         )}
       </div>
     </>

@@ -8,8 +8,8 @@
   background-color: #ffffff;
   padding: 0.8rem 1.5rem;
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 32%;
+  top: 45%;
   transform: translate(-50%, -50%);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -67,4 +67,7 @@
     #F19576 100%
   );
   animation: slidebg 5s linear infinite;
+}
+.selctedColor:hover{
+  transform: scale(1.1);
 }

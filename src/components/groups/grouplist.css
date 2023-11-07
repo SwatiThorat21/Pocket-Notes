@@ -56,3 +56,6 @@
     font-weight: 500;
     color: #464444;
   }
+  .selectedGroup {
+    background-color: #f7ecdc;
+  }

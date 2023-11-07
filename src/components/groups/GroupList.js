@@ -7,7 +7,6 @@ export default function GroupList({
 }) {
   function handleGroupClick(index) {
     setSelectedGroup(index);
-    console.log(selectedGroup);
   }
   return (
     <>
@@ -22,7 +21,7 @@ export default function GroupList({
               <p className="noGroup_line">Please add notes group !!</p>
             ) : (
               groupData.map((group, index) => (
-                <div className="group" key={index} onClick={()=>handleGroupClick(index)}>
+                <div className={`group ${index === selectedGroup && "selectedGroup"}`} key={index} onClick={()=>handleGroupClick(index)}>
                   <div
                     className="gr_logo"
                     style={{ backgroundColor: group.selectedColor }}

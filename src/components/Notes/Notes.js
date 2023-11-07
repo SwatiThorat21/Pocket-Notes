@@ -4,7 +4,7 @@ import encrypImg from "../../images/encryp.png";
 import sendIcon from "../../images/sendIcon.png";
 import "./notes.css";
 
-export default function GetNotes({ groupData, selectedGroup }) {
+export default function Notes({ groupData, selectedGroup }) {
   const [note, setNote] = useState("");
 
   function getCurrentDate() {
