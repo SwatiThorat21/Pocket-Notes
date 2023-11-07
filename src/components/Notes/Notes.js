@@ -1,22 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import bg_img from "../../images/bg_image.png";
 import encrypImg from "../../images/encryp.png";
 import sendIcon from "../../images/sendIcon.png";
 import "./notes.css";
 
-export default function GetNotes({
-  groupData,
-  newNotesData,
-  setNewNotesData,
-  selectedGroup,
-}) {
-  const [time, setTime] = useState("");
-  const [date, setDate] = useState("");
+export default function GetNotes({ groupData, selectedGroup }) {
   const [note, setNote] = useState("");
 
-  const selectedGroupData = groupData[selectedGroup];
-
-  useEffect(() => {
+  function getCurrentDate() {
     const todaysDate = new Date();
     const options = {
       year: "numeric",
@@ -24,10 +15,10 @@ export default function GetNotes({
       day: "numeric",
     };
     const formattedDate = todaysDate.toLocaleDateString("en-US", options);
-    setDate(formattedDate);
-  }, []);
+    return formattedDate;
+  }
 
-  useEffect(() => {
+  function getCurrentTime() {
     const date = new Date();
     let hours = date.getHours();
     let ampm = hours >= 12 ? "PM" : "AM";
@@ -36,24 +27,21 @@ export default function GetNotes({
     let minutes = date.getMinutes();
     minutes = minutes < 10 ? "0" + minutes : minutes;
     const timeFormat = hours + ":" + minutes + " " + ampm;
-    setTime(timeFormat);
-  }, []);
+    return timeFormat;
+  }
 
   function handleNoteSubmit() {
-    if (note.trim() !== "" ) {
+    if (note.trim() !== "") {
       const newNote = {
-        time: time,
-        date: date,
+        time: getCurrentTime(),
+        date: getCurrentDate(),
         note: note,
       };
-      if (selectedGroupData) {
-        setNewNotesData([...newNotesData, newNote]);
-      }
+      const newGroupData = [...groupData];
+      newGroupData[selectedGroup].notesData.push(newNote);
       setNote("");
     }
   }
-  console.log(selectedGroupData);
-
   return (
     <>
       {groupData.length === 0 ? (
@@ -73,20 +61,21 @@ export default function GetNotes({
         </div>
       ) : (
         <div className="show_notes">
-          {groupData &&
-            groupData.map((group, index) => (
-              <div className="group_heading" key={index}>
-                <div
-                  className="gr_logo"
-                  style={{ backgroundColor: group.selectedColor }}
-                >
-                  {group.grName.slice(0, 2).toUpperCase()}
-                </div>
-                <p className="gr_name">{group.grName}</p>
+          {groupData && (
+            <div className="group_heading">
+              <div
+                className="gr_logo"
+                style={{
+                  backgroundColor: groupData[selectedGroup].selectedColor,
+                }}
+              >
+                {groupData[selectedGroup].grName.slice(0, 2).toUpperCase()}
               </div>
-            ))}
+              <p className="gr_name">{groupData[selectedGroup].grName}</p>
+            </div>
+          )}
           <div className="notes_wrapper">
-            {newNotesData.map((noteData, index) => (
+            {groupData[selectedGroup].notesData.map((noteData, index) => (
               <div className="notes" key={index}>
                 <div className="dateTime_wrapper">
                   <p>{noteData.time}</p>
@@ -102,8 +91,13 @@ export default function GetNotes({
             <textarea
               rows="7"
               placeholder="Enter your text here.........."
-              value={newNotesData.note}
+              value={note}
               onChange={(e) => setNote(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleNoteSubmit();
+                }
+              }}
             ></textarea>
             <img src={sendIcon} alt="sendIcon" onClick={handleNoteSubmit} />
           </div>

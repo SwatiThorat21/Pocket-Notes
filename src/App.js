@@ -9,7 +9,6 @@ function App() {
   const [groupData, setGroupData] = useState([]);
   const [newGroupName, setNewGroupName] = useState("");
   const [newSelectedColor, setNewSelectedColor] = useState("");
-  const [newNotesData, setNewNotesData] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(0);
 
   function handleOpen() {
@@ -21,7 +20,7 @@ function App() {
       const newGroup = {
         grName: newGroupName,
         selectedColor: newSelectedColor,
-        notesData: newNotesData,
+        notesData: [],
       };
       setGroupData([...groupData, newGroup]);
       setNewGroupName("");
@@ -45,8 +44,7 @@ function App() {
           <div className="show_notes_container">
             <Notes
               groupData={groupData}
-              newNotesData={newNotesData}
-              setNewNotesData={setNewNotesData}
+              setGroupData={setGroupData}
               selectedGroup={selectedGroup}
             />
           </div>
