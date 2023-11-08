@@ -1,19 +1,19 @@
 import "./grouplist.css";
-import "../../App.css"
+import "../../App.css";
 
 export default function GroupList({
   handleOpen,
   groupData,
   setSelectedGroup,
   selectedGroup,
-  setShowMobileNotes
+  setShowMobileNotes,
 }) {
   function handleGroupClick(index) {
     setSelectedGroup(index);
     if (window.innerWidth <= 768) {
-      setShowMobileNotes(true); 
+      setShowMobileNotes(true);
     } else {
-      setShowMobileNotes(false); 
+      setShowMobileNotes(false);
     }
   }
   return (

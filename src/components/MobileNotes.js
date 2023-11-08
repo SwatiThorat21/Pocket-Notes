@@ -57,7 +57,7 @@ export default function MobileNotes({
             <img
               src={backArrow}
               alt="backArrow"
-              style={{ width: 25 }}
+              style={{ width: 25, cursor: "pointer" }}
               onClick={handleShowGroupList}
             />
             <div

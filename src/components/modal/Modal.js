@@ -1,5 +1,5 @@
 import "./modal.css";
-import "../../App.css"
+import "../../App.css";
 
 export default function Modal({
   handleGroupSubmit,
@@ -55,7 +55,7 @@ export default function Modal({
               onClick={() => setNewSelectedColor("#FF79F2")}
             ></div>
             <div
-               className={
+              className={
                 newSelectedColor === "#43E6FC" ? `${"selctedColor"}` : ""
               }
               style={{
@@ -77,7 +77,7 @@ export default function Modal({
               onClick={() => setNewSelectedColor("#F19576")}
             ></div>
             <div
-               className={
+              className={
                 newSelectedColor === "#0047FF" ? `${"selctedColor"}` : ""
               }
               style={{
@@ -88,7 +88,7 @@ export default function Modal({
               onClick={() => setNewSelectedColor("#0047FF")}
             ></div>
             <div
-               className={
+              className={
                 newSelectedColor === "#6691FF" ? `${"selctedColor"}` : ""
               }
               style={{

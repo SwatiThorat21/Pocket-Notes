@@ -3,7 +3,7 @@ import bg_img from "../../images/bg_image.png";
 import encrypImg from "../../images/encryp.png";
 import sendIcon from "../../images/sendIcon.png";
 import "./notes.css";
-import "../../App.css"
+import "../../App.css";
 
 export default function Notes({ groupData, selectedGroup, setGroupData }) {
   const [note, setNote] = useState("");
@@ -40,7 +40,7 @@ export default function Notes({ groupData, selectedGroup, setGroupData }) {
       };
       const newGroupData = [...groupData];
       newGroupData[selectedGroup].notesData.push(newNote);
-      setGroupData(newGroupData)
+      setGroupData(newGroupData);
       setNote("");
     }
   }
@@ -76,10 +76,16 @@ export default function Notes({ groupData, selectedGroup, setGroupData }) {
               <p className="gr_name">{groupData[selectedGroup].grName}</p>
             </div>
           )}
-          <div className="notes_wrapper"  style={{
-              overflowY: groupData[selectedGroup].notesData.length > 3 ? "scroll" : "hidden",
+          <div
+            className="notes_wrapper"
+            style={{
+              overflowY:
+                groupData[selectedGroup].notesData.length > 3
+                  ? "scroll"
+                  : "hidden",
               maxHeight: "300px",
-            }}>
+            }}
+          >
             {groupData[selectedGroup].notesData.map((noteData, index) => (
               <div className="notes" key={index}>
                 <div className="dateTime_wrapper">
