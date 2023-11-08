@@ -76,7 +76,6 @@ dialog {
   .notes_wrapper {
     background-color: #f7ecdc;
     padding: 1rem 0.4rem;
-    max-height: 409px !important;
   }
   .notes {
     display: grid;
@@ -95,6 +94,7 @@ dialog {
     right: 20px;
   }
   .show_notes {
-    grid-template-rows: 70px auto 130px;
+    grid-template-rows: 70px 1fr 130px;
+    height: 100vh;
   }
 }

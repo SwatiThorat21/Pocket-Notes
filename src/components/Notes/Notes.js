@@ -76,16 +76,7 @@ export default function Notes({ groupData, selectedGroup, setGroupData }) {
               <p className="gr_name">{groupData[selectedGroup].grName}</p>
             </div>
           )}
-          <div
-            className="notes_wrapper"
-            style={{
-              overflowY:
-                groupData[selectedGroup].notesData.length > 3
-                  ? "scroll"
-                  : "hidden",
-              maxHeight: "300px",
-            }}
-          >
+          <div className="notes_wrapper">
             {groupData[selectedGroup].notesData.map((noteData, index) => (
               <div className="notes" key={index}>
                 <div className="dateTime_wrapper">
