@@ -6,9 +6,11 @@ export default function GroupList({
   groupData,
   setSelectedGroup,
   selectedGroup,
+  setShowMobileNotes
 }) {
   function handleGroupClick(index) {
     setSelectedGroup(index);
+    setShowMobileNotes(true);
   }
   return (
     <>

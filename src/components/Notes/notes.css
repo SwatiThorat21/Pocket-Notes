@@ -49,9 +49,9 @@
 .notes p {
   margin: 0;
 }
-.dateTime_wrapper {
+/* .dateTime_wrapper {
   width: 170px;
-}
+} */
 .dateTime_wrapper p {
   margin: 0.3rem;
   font-size: 14px;
@@ -83,6 +83,8 @@ textarea {
   border-radius: 7px;
   padding: 0.5rem;
   resize: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
 }
 textarea::placeholder {
   font-family: "Roboto", sans-serif;

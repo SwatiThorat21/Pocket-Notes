@@ -35,12 +35,16 @@ dialog {
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border: none;
 }
-@media only screen and (max-width: 480px) {
+.mobile_show_notes_container{
+  display: none;
+}
+@media only screen and (max-width: 500px) {
   .show_notes_container {
     display: none;
   }
   .group_list {
     overflow-y: hidden !important;
+    max-height: 515px !important;
   }
   .notes_container {
     grid-template-columns: 1fr;
@@ -66,5 +70,27 @@ dialog {
   .create_btn{
     padding: 0.3rem 1rem !important;
   }
-  
+  .mobile_show_notes_container{
+    display: block;
+  }
+  .notes_wrapper{
+    background-color: #F7ECDC;
+    padding: 1rem 0.4rem;
+  }
+  .notes{
+    display: grid;
+    grid-template-columns: 130px 220px;
+    font-size: 10px;
+  }
+  .teaxtarea_wrapper{
+    padding: 0.6rem;
+  }
+  textarea{
+    width: 96% !important;
+    height: 58px;
+  }
+  .teaxtarea_wrapper img{
+    top: 50px;
+    right: 20px;
+  }
 }
