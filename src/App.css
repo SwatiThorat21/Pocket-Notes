@@ -95,6 +95,6 @@ dialog {
     right: 20px;
   }
   .show_notes {
-    grid-template-rows: 70px 432px 130px;
+    grid-template-rows: 70px auto 130px;
   }
 }
