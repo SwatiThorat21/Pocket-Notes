@@ -76,6 +76,7 @@ dialog {
   .notes_wrapper{
     background-color: #F7ECDC;
     padding: 1rem 0.4rem;
+    overflow-y: scroll !important;
   }
   .notes{
     display: grid;

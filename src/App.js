@@ -13,7 +13,7 @@ function App() {
   const [newSelectedColor, setNewSelectedColor] = useState("");
   const [selectedGroup, setSelectedGroup] = useState(0);
   const [error, setError] = useState(false);
-  const[showMobileNotes, setShowMobileNotes] = useState(false);
+  const [showMobileNotes, setShowMobileNotes] = useState(false);
 
   const ref = useClickAway(() => {
     if (!error) {
@@ -69,15 +69,17 @@ function App() {
     <>
       <div>
         <div className={`notes_container ${isModalOpen && "opaqueBack"}`}>
-         {!showMobileNotes && <div className="group_details_container">
-            <GroupList
-              handleOpen={handleOpen}
-              groupData={groupData}
-              selectedGroup={selectedGroup}
-              setSelectedGroup={setSelectedGroup}
-              setShowMobileNotes={setShowMobileNotes}
-            />
-          </div>}
+          {!showMobileNotes && (
+            <div className="group_details_container">
+              <GroupList
+                handleOpen={handleOpen}
+                groupData={groupData}
+                selectedGroup={selectedGroup}
+                setSelectedGroup={setSelectedGroup}
+                setShowMobileNotes={setShowMobileNotes}
+              />
+            </div>
+          )}
           <div className="show_notes_container">
             <Notes
               groupData={groupData}
@@ -85,13 +87,16 @@ function App() {
               selectedGroup={selectedGroup}
             />
           </div>
-          {showMobileNotes && <div className="mobile_show_notes_container">
-            <MobileNotes
-              groupData={groupData}
-              setGroupData={setGroupData}
-              selectedGroup={selectedGroup}
-            />
-          </div>}
+          {showMobileNotes && (
+            <div className="mobile_show_notes_container">
+              <MobileNotes
+                groupData={groupData}
+                setGroupData={setGroupData}
+                selectedGroup={selectedGroup}
+                setShowMobileNotes={setShowMobileNotes}
+              />
+            </div>
+          )}
         </div>
         {isModalOpen && (
           <dialog ref={ref} className="modal_container">
