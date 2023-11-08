@@ -80,7 +80,7 @@ dialog {
   }
   .notes{
     display: grid;
-    grid-template-columns: 130px 220px;
+    grid-template-columns: 138px 225px;
     font-size: 10px;
   }
   .teaxtarea_wrapper{
