@@ -10,7 +10,11 @@ export default function GroupList({
 }) {
   function handleGroupClick(index) {
     setSelectedGroup(index);
-    setShowMobileNotes(true);
+    if (window.innerWidth <= 768) {
+      setShowMobileNotes(true); 
+    } else {
+      setShowMobileNotes(false); 
+    }
   }
   return (
     <>

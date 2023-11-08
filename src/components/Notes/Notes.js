@@ -94,7 +94,7 @@ export default function Notes({ groupData, selectedGroup, setGroupData }) {
           </div>
           <div className="teaxtarea_wrapper">
             <textarea
-              rows="7"
+              rows="6"
               placeholder="Enter your text here.........."
               value={note}
               onChange={(e) => setNote(e.target.value)}

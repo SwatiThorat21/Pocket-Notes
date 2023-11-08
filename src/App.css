@@ -76,7 +76,7 @@ dialog {
   .notes_wrapper{
     background-color: #F7ECDC;
     padding: 1rem 0.4rem;
-    overflow-y: scroll !important;
+    max-height: 409px !important;
   }
   .notes{
     display: grid;
@@ -88,10 +88,13 @@ dialog {
   }
   textarea{
     width: 96% !important;
-    height: 58px;
+    height: 94px;
   }
   .teaxtarea_wrapper img{
-    top: 50px;
+    top: 85px;
     right: 20px;
+  }
+  .show_notes{
+    grid-template-rows: 70px 432px 130px;
   }
 }
